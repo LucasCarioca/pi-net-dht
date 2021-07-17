@@ -6,5 +6,5 @@ start:
 install:
 	go get -d ./...
 
-build-arm6:
+build:
 	go build .
