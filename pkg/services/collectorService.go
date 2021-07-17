@@ -25,7 +25,7 @@ func (s *CollectorService) SendClimateRecord(temperature float32, humidity float
 		return err
 	}
 	fmt.Println("++++++++++++++++++++++++++++++++++++RECORD+SENT++++++++++++++++++++++++++++++++++++++++")
-	fmt.Println("Temperature = %v*C, Humidity = %v%%", temperature, humidity)
+	fmt.Printf("Temperature = %v*C, Humidity = %v%%\n", temperature, humidity)
 	fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 	return nil
 }
