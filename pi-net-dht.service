@@ -1,0 +1,7 @@
+After=pigpiod.service
+
+[Service]
+ExecStart=/bin/bash -c '/home/pi/go/bin/pi-net-dht > /home/pi/apps/logs/pi-net-dht.log 2>&1'
+
+[Install]
+WantedBy=multi-user.target
