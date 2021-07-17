@@ -9,12 +9,12 @@ import (
 
 type CollectorService struct {}
 
-func (s *CollectorService) SendClimateRecord(temperature float32, humidity float32) error {
+func (s *CollectorService) SendClimateRecord(temperature float32, humidity float32, node string, location string) error {
 	values := map[string]string{
 		"temperature": fmt.Sprintf("%v*C", temperature),
 		"humidity":    fmt.Sprintf("%v%%", humidity),
-		"node":        "piz02",
-		"location":    "office",
+		"node":        node,
+		"location":    location,
 	}
 	data, err := json.Marshal(values)
 	if err != nil {
