@@ -12,27 +12,32 @@ import (
 
 func main() {
 	setupCloseHandler()
-	node := "unknown"
+	pinetCollectorHost := "0.0.0.0"
 	if len(os.Args) > 1 {
-		node = os.Args[1]
+		pinetCollectorHost = os.Args[1]
+	}
+
+	node := "unknown"
+	if len(os.Args) > 2 {
+		node = os.Args[2]
 	}
 
 	location := "unknown"
-	if len(os.Args) > 2 {
-		location = os.Args[2]
+	if len(os.Args) > 3 {
+		location = os.Args[3]
 	}
 
 	sensor := dht.DHT22
-	if len(os.Args) > 3 {
-		if os.Args[3] == "dht11" {
+	if len(os.Args) > 4 {
+		if os.Args[4] == "dht11" {
 			sensor = dht.DHT11
 		} else {
 			fmt.Println("...using dht22 by default...")
 		}
 	}
 	pin := 4
-	if len(os.Args) > 4 {
-		newPin, err := strconv.Atoi(os.Args[4])
+	if len(os.Args) > 5 {
+		newPin, err := strconv.Atoi(os.Args[5])
 		if err != nil {
 			fmt.Println("...using pin 4 as default...")
 		} else {
@@ -41,8 +46,8 @@ func main() {
 	}
 
 	mockDHT := true
-	if len(os.Args) > 5 {
-		newMockState, err := strconv.ParseBool(os.Args[5])
+	if len(os.Args) > 6 {
+		newMockState, err := strconv.ParseBool(os.Args[6])
 		if err != nil {
 			fmt.Println("...using real dht service by default...")
 		} else {
@@ -58,7 +63,7 @@ func main() {
 		if err != nil {
 			fmt.Println("Failed to read sensor")
 		} else {
-			collectorService.SendClimateRecord(*temperature, *humidity, node, location)
+			collectorService.SendClimateRecord(pinetCollectorHost, *temperature, *humidity, node, location)
 		}
 	}
 }
