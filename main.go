@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"strconv"
 	"syscall"
+	"time"
 )
 
 func main() {
@@ -65,6 +66,7 @@ func main() {
 		} else {
 			collectorService.SendClimateRecord(pinetCollectorHost, *temperature, *humidity, node, location)
 		}
+		time.Sleep(1 * time.Minute)
 	}
 }
 
