@@ -10,7 +10,7 @@ jobs:
       - name: Install cross compile deps
         run: |
           sudo apt install gcc-arm-linux-gnueabi
-          cat /usr/bin/arm-linux-gnueabi-gccd
+          cat /usr/bin/arm-linux-gnueabi-gcc
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
